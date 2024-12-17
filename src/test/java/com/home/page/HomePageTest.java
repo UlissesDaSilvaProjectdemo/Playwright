@@ -2,7 +2,6 @@ package com.home.page;
 
 import org.testng.annotations.*;
 import com.browser.factory.PlaywrightFactory;
-import com.microsoft.playwright.ElementHandle;
 import com.microsoft.playwright.Page;
 import com.page.object.HomePage;
 import junit.framework.Assert;

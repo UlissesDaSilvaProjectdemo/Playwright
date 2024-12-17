@@ -1,5 +1,9 @@
 package com.browser.factory;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+  
+
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
 import com.microsoft.playwright.BrowserType;
@@ -13,6 +17,7 @@ public class PlaywrightFactory {
 	Browser browser;
 	BrowserContext browsercontext;
 	Page page;
+	 
 	
 	
 	public Page initBrowser(String browserName) {
@@ -45,8 +50,6 @@ public class PlaywrightFactory {
 		page = browsercontext.newPage();
 		page.navigate( "https://www.orangehrm.com/");
 		
-		 
-		
 		
 		// Navigate to the specified URL
         if (browserName != null && !browserName.isEmpty()) {
@@ -58,6 +61,13 @@ public class PlaywrightFactory {
 		return page;
 	}
 	
+	
+	 public void init_prop() throws FileNotFoundException {
+		 
+			FileInputStream lp = new FileInputStream("./src/test/resources/config/config.properties");
+			 
+			
+;	 }
 	
 
 }
