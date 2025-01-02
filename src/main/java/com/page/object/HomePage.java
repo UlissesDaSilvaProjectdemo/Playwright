@@ -9,9 +9,9 @@ import com.microsoft.playwright.Page;
 public class HomePage {
 	
 	 private Page page;
-	 private String search = "//*[@id=\"APjFqb\"]";
-	 private String serachIcon="//*[@id=\"APjFqb\"]";
-	 private String  searchPagehelper="//div[@class='yKMVIe']";
+	 private String search = "//*[@id=\"search\"]/input";
+	 private String serachIcon="//*[@id=\"search\"]/span/button";
+	 private String  searchPagehelper="//*[@id=\"content\"]/h1";
 	 
 	 
 
@@ -21,14 +21,16 @@ public class HomePage {
 
 	}
 	 
-	 
-
+	
 	// page action methods
 	public String getHomepPageTitle(){
 		String title =  page.title();
 		System.out.println("page title:" + title);
 		return title;
 	}
+	
+	
+	 
 
 	    public String getHomePageURL(){
 	    	String url =  page.url();

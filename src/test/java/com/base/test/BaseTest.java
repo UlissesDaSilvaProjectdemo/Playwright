@@ -1,5 +1,8 @@
 package com.base.test;
 
+import java.io.FileNotFoundException;
+import java.util.Properties;
+
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import com.browser.factory.PlaywrightFactory;
@@ -13,16 +16,17 @@ public class BaseTest {
 	
 	Playwright playwright;
 	PlaywrightFactory playwrightFactory;
-	Browser browser;
-	BrowserContext browsercontext;
-	Page page;
-	HomePage homePage;
+	protected Page page;
+	public HomePage homePage;
+	Properties prop;
+	
 	
 	
 	@BeforeTest
-	public void setup() {
+	public void setup() throws FileNotFoundException {
 		playwrightFactory = new  PlaywrightFactory();
-		page = playwrightFactory.initBrowser("chromium");
+		prop = playwrightFactory.init_prop();
+		page = playwrightFactory.initBrowser(prop);
 		homePage  = new HomePage(page);
 		 
 	}

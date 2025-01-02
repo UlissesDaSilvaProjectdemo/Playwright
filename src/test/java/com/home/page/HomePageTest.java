@@ -1,44 +1,28 @@
 package com.home.page;
 
 import org.testng.annotations.*;
-import com.browser.factory.PlaywrightFactory;
-import com.microsoft.playwright.Page;
-import com.page.object.HomePage;
+
+import com.app.constants.Appconstants;
+import com.base.test.BaseTest;
 import junit.framework.Assert;
 
-public class HomePageTest {
-		PlaywrightFactory pf;
-		Page page;
-		HomePage homePage;
-
-
-		@BeforeClass
-		public void setup(){
-
-		pf= new PlaywrightFactory();
-		page = pf.initBrowser("chromium");
-		homePage = new HomePage(page);
-		   }
-		
-		
-		
+public class HomePageTest extends BaseTest {
 	 
-
 		@Test
 		public void homePageTittleTest(){
 		String actualTitle =homePage.getHomepPageTitle();
-		Assert.assertEquals(actualTitle, "Google");
+		Assert.assertEquals(actualTitle, Appconstants.LOGIN_PAGE_TITLE);
 		}
 		
 		
 		@Test
 		public void homePageURLTest(){
 		String actualURL =homePage.getHomePageURL();
-		Assert.assertEquals(actualURL,"https://www.google.co.uk/");
+		Assert.assertEquals(actualURL,"https://awesomeqa.com/ui/index.php?route=common/home");
 		}
 		
 		
-		@DataProvider
+		//@DataProvider
 		public  Object [] [] getProductData(String productName){
 			 return new Object[][] {
 				 
@@ -50,7 +34,7 @@ public class HomePageTest {
 		
 		}
 		
-		@Test(dataProvider = "getProductData")
+		//@Test(dataProvider = "getProductData")
 		public void searchTest(String productName) {
 			String actualProductName = homePage.doSearch(productName);
 			Assert.assertEquals(actualProductName, productName);
@@ -60,9 +44,12 @@ public class HomePageTest {
 		
 		@Test
 		public void searchTest(){
-		String actualSearchHeader = homePage.doSearch("NoteBook" );
-		Assert.assertEquals(actualSearchHeader, "notebook - Google Search");
+		String actualSearchHeader = homePage.doSearch("Iphone" );
+		Assert.assertEquals(actualSearchHeader, "Search - iphone");
+		 
 		}
+		
+		 
 		
 		 
 

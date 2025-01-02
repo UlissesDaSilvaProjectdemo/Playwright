@@ -10,3 +10,10 @@ normal text
 
 1. formatted numbering
 2. blabla
+
+```
+$ some-shell-command
+```
+
+`single-code-thing`
+

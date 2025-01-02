@@ -2,7 +2,8 @@ package com.browser.factory;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-  
+import java.io.IOException;
+import java.util.Properties;
 
 import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserContext;
@@ -17,13 +18,14 @@ public class PlaywrightFactory {
 	Browser browser;
 	BrowserContext browsercontext;
 	Page page;
+	Properties prop;
 	 
 	
 	
-	public Page initBrowser(String browserName) {
+	public Page initBrowser(Properties prop) {
+	String browserName =prop.getProperty("browser").trim();
 		
 		System.out.println("browser name is:" + browserName);
-		
 		playwright = Playwright.create();
 		
 		switch (browserName) {
@@ -48,26 +50,29 @@ public class PlaywrightFactory {
 		
 		browsercontext = browser.newContext();
 		page = browsercontext.newPage();
-		page.navigate( "https://www.orangehrm.com/");
-		
-		
-		// Navigate to the specified URL
-        if (browserName != null && !browserName.isEmpty()) {
-            System.out.println("Navigating to URL: " + browserName);
-            page.navigate(browserName);
-        } else {
-            System.out.println("No URL provided to navigate.");
-        }
+		page.navigate(prop.getProperty("url").trim());
 		return page;
+		
+		
 	}
 	
 	
-	 public void init_prop() throws FileNotFoundException {
+	 public Properties init_prop() throws FileNotFoundException {
 		 
 			FileInputStream lp = new FileInputStream("./src/test/resources/config/config.properties");
+			prop = new Properties();
+			try {
+				prop.load(lp);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			 
-			
-;	 }
+			return prop;
+      }
+
+ 
 	
+	 
 
 }
