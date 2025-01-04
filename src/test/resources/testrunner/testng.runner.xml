@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<suite name="PlaywrightProj" verbose="4">
+    <test name="Open Cat Regression Test">
+        <classes>
+            <class name="com.home.page.HomePageTest"/>
+        </classes>
+    </test>
+</suite>

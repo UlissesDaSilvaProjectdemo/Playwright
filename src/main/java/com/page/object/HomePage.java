@@ -1,27 +1,21 @@
 package com.page.object;
-
-import org.testng.annotations.*;
-
-import com.microsoft.playwright.ElementHandle;
-import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
-
 public class HomePage {
 	
 	 private Page page;
 	 private String search = "//*[@id=\"search\"]/input";
 	 private String serachIcon="//*[@id=\"search\"]/span/button";
-	 private String  searchPagehelper="//*[@id=\"content\"]/h1";
+	 private String searchPagehelper="//*[@id=\"content\"]/h1";
+	 private String myAccountBtn="//*[@id=\"top-links\"]/ul/li[2]/a/span[1]";
+	 private String loginBtn="a:text('Login')";
 	 
 	 
-
 	 //page constructor
 	 public HomePage(Page page){
 	   this.page = page;
 
 	}
 	 
-	
 	// page action methods
 	public String getHomepPageTitle(){
 		String title =  page.title();
@@ -30,8 +24,6 @@ public class HomePage {
 	}
 	
 	
-	 
-
 	    public String getHomePageURL(){
 	    	String url =  page.url();
 			System.out.println("page title:" + url);
@@ -46,5 +38,15 @@ public class HomePage {
 		return header;
 
 	    }
+	    
+	    
+	    public navigateToLoginPage navigateToLoginPage() {
+	    	page.click(myAccountBtn);
+	    	page.click(loginBtn);
+	    	return new navigateToLoginPage(page);
+	    	
+	    }
+	    
+	    
 
 }
