@@ -2,26 +2,26 @@ package com.page.object;
 
 import com.microsoft.playwright.Page;
 
-public class navigateToLoginPage {
+public class LoginPage {
 	
 	 private Page page;
 	 private String email = "//*[@id=\"input-email\"]";
-	 private String password="//*[@id=\"search\"]/span/button";
+	 private String password="//*[@id=\"input-password\"]";
 	 private String forgotPwdLink = "//*[@id=\"content\"]/div/div[2]/div/form/div[2]/a";
 	 private String loginBtn = "//*[@id=\"content\"]/div/div[2]/div/form/input";
-	 private String logouBtn="locator";
+	 private String logouBtn="//*[@id=\"content\"]/div/div[2]/div/form/input";
 	 
 	 //page constructor
-	 public navigateToLoginPage(Page page){
+	 public LoginPage(Page page){
 	   this.page = page;
 
 	}
 	 
-	 public String getPAgeTitle() {
-		 return getPAgeTitle();
+	 public String getPageTitle() {
+		 return getPageTitle();
 	 }
 	 
-	 public boolean forgotPwdlink() {
+	 public boolean isForgotPWDlinkExist() {
 		 return page.isVisible(forgotPwdLink);
 	 }
 	 

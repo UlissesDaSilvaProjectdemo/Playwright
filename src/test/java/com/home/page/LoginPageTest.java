@@ -10,7 +10,7 @@ import com.base.test.BaseTest;
 public class LoginPageTest extends BaseTest {
 	
 
-	@Test
+	@Test(priority=1)
     public void navigateToLoginPage() {
 		
 		     loginPage =  homePage.navigateToLoginPage();
@@ -19,8 +19,22 @@ public class LoginPageTest extends BaseTest {
 		     Assert.assertEquals(ActPageTitle,Appconstants.LOGIN_PAGE_TITLE);
 		    	
 		    }
-
+	
+	@Test(priority=2)
+	public void forgotPWDLinkExist() {
+		
+		Assert.assertTrue(loginPage.isForgotPWDlinkExist());
 	}
+	
+	
+	@Test(priority=3)
+	  public void AppLoginTest() {
+		Assert.assertTrue(loginPage.doLogin(prop.getProperty("username").trim(),prop.getProperty("password").trim()));
+	 
+	  }
+	  
+	  
+}
 
 
  

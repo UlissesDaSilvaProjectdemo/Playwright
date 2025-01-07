@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
  
-<suite name="PlaywrightProj" verbose="4">
-    <test name="Open Cat Regression Test">
+<suite name="PlaywrightProj" parallel="tests" thread-count="1" verbose="4">
+    
+    
+    <test name="Open Cat Sanity Test">
         <classes>
             <class name="com.home.page.HomePageTest"/>
+            
         </classes>
     </test>
+    
+ 
+      <test name="Open Cat Smoke Test">
+        <classes>
+           <class name="com.home.page.LoginPageTest"/>
+        </classes>
+    </test>
+  
+    
+    <test name="Open Cat Functional Test">
+        <classes>
+           <class name="com.home.page.RegisterPageTest"/>
+        </classes>
+    </test>
+    
+    
+   
+      
 </suite>

@@ -8,7 +8,8 @@ import com.browser.factory.PlaywrightFactory;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.page.object.HomePage;
-import com.page.object.navigateToLoginPage;
+import com.page.object.LoginPage;
+import com.page.object.RegisterPage;
 
 public class BaseTest {
 	
@@ -16,9 +17,10 @@ public class BaseTest {
 	PlaywrightFactory playwrightFactory;
 	protected Page page;
 	public HomePage homePage;
-	protected navigateToLoginPage loginPage;
+	public LoginPage loginPage;
+	public RegisterPage registePage;
 	
-	Properties prop;
+	protected Properties prop;
 	
 	
 	
@@ -28,6 +30,8 @@ public class BaseTest {
 		prop = playwrightFactory.init_prop();
 		page = playwrightFactory.initBrowser(prop);
 		homePage  = new HomePage(page);
+		registePage  = new RegisterPage(page);
+		 
 		 
 	}
 	

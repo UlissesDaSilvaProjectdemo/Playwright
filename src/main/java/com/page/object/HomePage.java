@@ -1,5 +1,6 @@
 package com.page.object;
 import com.microsoft.playwright.Page;
+
 public class HomePage {
 	
 	 private Page page;
@@ -8,6 +9,7 @@ public class HomePage {
 	 private String searchPagehelper="//*[@id=\"content\"]/h1";
 	 private String myAccountBtn="//*[@id=\"top-links\"]/ul/li[2]/a/span[1]";
 	 private String loginBtn="a:text('Login')";
+	 private String registerBtn="//*[@id=\"top-links\"]/ul/li[2]/ul/li[1]/a";
 	 
 	 
 	 //page constructor
@@ -40,13 +42,20 @@ public class HomePage {
 	    }
 	    
 	    
-	    public navigateToLoginPage navigateToLoginPage() {
+	    public LoginPage navigateToLoginPage() {
 	    	page.click(myAccountBtn);
 	    	page.click(loginBtn);
-	    	return new navigateToLoginPage(page);
+	    	return new LoginPage(page);
 	    	
 	    }
 	    
 	    
+	    public RegisterPage navigateToRegisterPage() {
+	    	page.click(myAccountBtn);
+	    	page.click(registerBtn);
+	    	return new RegisterPage(page);
+	    	
+	    }
 
+	   
 }
