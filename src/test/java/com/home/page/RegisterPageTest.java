@@ -1,89 +1,58 @@
 package com.home.page;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.app.constants.Appconstants;
 import com.base.test.BaseTest;
+import com.page.object.HomePage;
+import com.page.object.RegisterPage;
 
-public class RegisterPageTest extends BaseTest{
-	
-	 
-	
-	@Test(priority=1)
-    public void navigateToRegisterPage() {
-		    
-		     registePage = registePage.NavigateToRegister();
-		     String ActPageTitle1 = registePage.getRegisterPageTitle();
-		     System.out.println(ActPageTitle1);
-		     Assert.assertEquals(ActPageTitle1,Appconstants.REGISTER_PAGE_TITLE);
-		    	
-		    }
-	
-	@Test(priority=2)
-	public void firstName(String productName) {
-	 
-		registePage.firstName("ulisses").trim();
-		 
-	}
-	
-	@Test(priority=3)
-	 public void lastName(String productName){
-		registePage.lastName("DaSilva").trim();
-		 
+public class RegisterPageTest extends BaseTest {
 
-	 }
-	
-	@Test(priority=4)
-	 public void email(String productName){
-		registePage.email("Uli@gmaill.com").trim();
-		 
+    private RegisterPage registerPage;
 
-	 }
-	
-	@Test(priority=5)
-	 public void telephone(String productName){
-		registePage.telephone("02092928383").trim();
-		 
+    // Navigate to the registration page before each test
+    @Test(priority=1)
+    public void setupRegisterPage() {
+        registerPage = homePage.navigateToRegisterPage();
+    }
 
+    // Verify the title of the registration page
+    @Test(priority=2)
+    public void validateRegisterPageTitle() {
+        String actualPageTitle = registerPage.getRegisterPageTitle();
+        System.out.println("Register Page Title: " + actualPageTitle);
+        Assert.assertEquals(actualPageTitle, Appconstants.REGISTER_PAGE_TITLE, "Page title mismatch!");
+    }
 
-	 }
-	
-	@Test(priority=6)
-	 public void password(String productName){
-		registePage.firstName("ulisses").trim();
-		 
+    // DataProvider for parameterized testing
+    @DataProvider(name = "userData")
+    public Object[][] getUserData() {
+        return new Object[][]{
+            {"Ulisses", "DaSilva", "Uli@gmail.com", "02092928383", "PWDtest@app"}
+        };
+    }
 
+    // Fill the registration form
+    @Test(dataProvider = "userData", priority = 2)
+    public void fillRegistrationForm(String firstName, String lastName, String email, String telephone, String password) {
+        registerPage.firstName(firstName);
+        registerPage.lastName(lastName);
+        registerPage.email(email);
+        registerPage.telephone(telephone);
+        registerPage.password(password);
+        registerPage.passwordConfirm(password); // Confirm password
+        registerPage.subscribeYes(); 
+        registerPage.privatePolicy();// Subscribe to newsletters
+    }
 
-	 }
-	
-	@Test(priority=7)
-	 public void passwordConfirm(String productName){
-		registePage.password("PWDtest@app").trim();
-		 
-
-
-	 }
-	
-	@Test(priority=8)
-	 public void suscibeYes(){
-		registePage.subscibeYes();
-		 
-
-
-	 }
-	
-	@Test(priority=9)
-	 public void privatePolicy(String productName){
-		registePage.firstName("ulisses").trim();
-		 
-	 }
-	
-	@Test(priority=10)
-	 public void submitFormBtn( ){
-			 
-		registePage.submitFormBtn();
-		 
-	 }
-
-
+    // Submit the form
+    @Test(priority = 3, dependsOnMethods = "fillRegistrationForm")
+    public void submitRegistrationForm() {
+        registerPage.submitFormBtn();
+        // Add validation to verify successful submission, if applicable
+    }
 }
+

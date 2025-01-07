@@ -1,31 +1,35 @@
 package com.page.object;
 import org.testng.Assert;
 
+import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.microsoft.playwright.options.WaitForSelectorState;
 
 public class RegisterPage {
 	
 		 private Page page;
 		 private String myAccountBtn="//*[@id=\"top-links\"]/ul/li[2]/a/span[1]";
 		 private String navigateToregisterBtn="//*[@id=\"top-links\"]/ul/li[2]/ul/li[1]/a";
-		 private String registerPageTitle = "//*[@id=\"content\"]/h1";
-		 private String firstName = "//*[@id=\"input-firstname\"]";
-		 private String lastName=" //*[@id=\"input-firstname\"]";
-		 private String email = " //*[@id=\"input-email\"]";
-		 private String telephone = "//*[@id=\"input-telephone\"] ";
-		 private String password="//*[@id=\"input-password\"] ";
-		 private String passwordConfirm="//*[@id=\"input-confirm\"] ";
-		 private String subscibeYes = "input:text('yes')";
-		 private String privatePolicy = "//*[@id=\"content\"]/form/div/div/a";
-		 private String submitFormBtn = "//*[@id=\"content\"]/form/div/div/input[2]";
+		 private String registerPageTitle = "//*[@id='content']/h1";
+		 private String firstName = "//*[@id='input-firstname']";
+		 private String lastName="//*[@id='input-lastname']";
+		 private String email = "//*[@id='input-email']";
+		 private String telephone = "//*[@id='input-telephone'] ";
+		 private String password="//*[@id='input-password'] ";
+		 private String passwordConfirm="//*[@id='input-confirm'] ";
+		 private String subscibeYes = "//*[@id='content']/form/fieldset[3]/div/div/label[1]/input)";
+		 private String privatePolicy = "//*[@id='content']/form/div/div/input[1]";
 		 
-		  
+		 private String submitFormBtn = "//*[@id='content']/form/div/div/input[2]";
+		 
 		 
 		 //page constructor
 		 public RegisterPage(Page page){
 		   this.page = page;
+		   
 
 		}
+		 
 		 
 		public String getRegisterPageTitle() {
 			
@@ -34,7 +38,6 @@ public class RegisterPage {
 			return getRegisterPageTitle();
 		 }
 		
-		 
 		 
 		 
 		//PageActions
@@ -56,45 +59,58 @@ public class RegisterPage {
 		 }
 		 
 		 public String lastName(String productName){
+			    //page.waitForTimeout(30_000);
 				page.fill(lastName,productName);
 				return lastName;
 
 
 		 }
 		 public String email(String productName){
+			   // page.waitForTimeout(40_000);
 				page.fill(email,productName);
 				return email;
 
 
 		 }
 		 public String telephone(String productName){
+			    //page.waitForTimeout(30_000);
 				page.fill(telephone,productName);
 				return telephone;
 
 
 		 }
 		 public String password(String productName){
+			    //page.waitForTimeout(30_000);
 				page.fill(password,productName);
 				return password;
 
 
 		 }
 		 public String passwordConfirm(String productName){
+			   // page.waitForTimeout(30_000);
 				page.fill(passwordConfirm,productName);
 				return passwordConfirm;
 
 
 		 }
-		 public String subscibeYes(){
-				page.click(subscibeYes);
+		 public String subscribeYes(){
+			  
+			    //Scroll to the bottom of the page
+			    page.evaluate("window.scrollTo(0, document.body.scrollHeight)");
+			    //Wait for an element to become visible
+			    Locator element = page.locator("//*[@id='content']/form/div/div/a"); // Replace with your element's selector
+			    element.waitFor(new Locator.WaitForOptions().setState(WaitForSelectorState.VISIBLE));
+			    // Perform actions once the element is visible
+			    element.click();
 				return subscibeYes;
 
 
+				
 		 }
-		 public String privatePolicy(String productName){
-				page.fill(firstName,productName);
-				return firstName;
-
+		 public String privatePolicy(){
+				page.click(privatePolicy);
+				return privatePolicy;
+ 
 
 		 }
 		 public String submitFormBtn( ){

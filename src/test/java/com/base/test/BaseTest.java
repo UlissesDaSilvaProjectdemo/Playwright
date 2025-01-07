@@ -33,9 +33,10 @@ public class BaseTest {
 		prop = playwrightFactory.init_prop();
 		page = playwrightFactory.initBrowser(prop);
 		homePage  = new HomePage(page);
-		registePage  = new RegisterPage(page);
 		 
 		 
+		 
+		
 	}
 	
 	
