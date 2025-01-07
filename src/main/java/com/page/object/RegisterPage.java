@@ -6,6 +6,7 @@ import com.microsoft.playwright.Page;
 public class RegisterPage {
 	
 		 private Page page;
+		 private String myAccountBtn="//*[@id=\"top-links\"]/ul/li[2]/a/span[1]";
 		 private String navigateToregisterBtn="//*[@id=\"top-links\"]/ul/li[2]/ul/li[1]/a";
 		 private String registerPageTitle = "//*[@id=\"content\"]/h1";
 		 private String firstName = "//*[@id=\"input-firstname\"]";
@@ -17,7 +18,8 @@ public class RegisterPage {
 		 private String subscibeYes = "input:text('yes')";
 		 private String privatePolicy = "//*[@id=\"content\"]/form/div/div/a";
 		 private String submitFormBtn = "//*[@id=\"content\"]/form/div/div/input[2]";
-		private String clickRegisterlink = "//*[@id=\"top-links\"]/ul/li[2]/ul/li[1]/a";
+		 
+		  
 		 
 		 //page constructor
 		 public RegisterPage(Page page){
@@ -37,10 +39,11 @@ public class RegisterPage {
 		 
 		//PageActions
 		 public  RegisterPage  NavigateToRegister() {
+			 page.click(myAccountBtn);
 			 page.click(navigateToregisterBtn);
-			 page.click(clickRegisterlink);
-			 Assert.assertEquals(registerPageTitle, true);
-			 return NavigateToRegister();
+			 return new RegisterPage(page);
+			 
+			 
 			  
 
 	}

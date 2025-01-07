@@ -23,9 +23,12 @@ public class BaseTest {
 	protected Properties prop;
 	
 	
+	 
+	 
 	
 	@BeforeTest
 	public void setup() throws FileNotFoundException {
+		
 		playwrightFactory = new  PlaywrightFactory();
 		prop = playwrightFactory.init_prop();
 		page = playwrightFactory.initBrowser(prop);

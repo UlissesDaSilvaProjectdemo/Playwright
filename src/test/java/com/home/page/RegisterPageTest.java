@@ -7,11 +7,11 @@ import com.base.test.BaseTest;
 
 public class RegisterPageTest extends BaseTest{
 	
-	//private RegisterPage RegisterPageObj;
+	 
 	
-	@Test
+	@Test(priority=1)
     public void navigateToRegisterPage() {
-		
+		    
 		     registePage = registePage.NavigateToRegister();
 		     String ActPageTitle1 = registePage.getRegisterPageTitle();
 		     System.out.println(ActPageTitle1);
@@ -19,66 +19,66 @@ public class RegisterPageTest extends BaseTest{
 		    	
 		    }
 	
-	@Test
-	public void firstName() {
+	@Test(priority=2)
+	public void firstName(String productName) {
 	 
-		registePage.firstName("ulisses");
+		registePage.firstName("ulisses").trim();
 		 
 	}
 	
-	@Test
+	@Test(priority=3)
 	 public void lastName(String productName){
-		registePage.lastName("DaSilva");
+		registePage.lastName("DaSilva").trim();
 		 
 
 	 }
 	
-	@Test
+	@Test(priority=4)
 	 public void email(String productName){
-		registePage.email("Uli@gmaill.com");
+		registePage.email("Uli@gmaill.com").trim();
 		 
 
 	 }
 	
-	@Test
+	@Test(priority=5)
 	 public void telephone(String productName){
-		registePage.telephone("02092928383");
+		registePage.telephone("02092928383").trim();
 		 
 
 
 	 }
 	
-	@Test
+	@Test(priority=6)
 	 public void password(String productName){
-		registePage.firstName("ulisses");
+		registePage.firstName("ulisses").trim();
 		 
 
 
 	 }
 	
-	@Test
+	@Test(priority=7)
 	 public void passwordConfirm(String productName){
-		registePage.password("PWDtest@app");
+		registePage.password("PWDtest@app").trim();
 		 
 
 
 	 }
 	
-	@Test
-	 public void subscibeYes(){
+	@Test(priority=8)
+	 public void suscibeYes(){
 		registePage.subscibeYes();
 		 
 
 
 	 }
 	
-	@Test
+	@Test(priority=9)
 	 public void privatePolicy(String productName){
-		registePage.firstName("ulisses");
+		registePage.firstName("ulisses").trim();
 		 
 	 }
 	
-	@Test
+	@Test(priority=10)
 	 public void submitFormBtn( ){
 			 
 		registePage.submitFormBtn();
