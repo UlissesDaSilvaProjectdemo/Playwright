@@ -10,17 +10,15 @@
         </classes>
     </test>
     
- 
-      <test name="Open Cat Smoke Test">
-        <classes>
-           <class name="com.home.page.LoginPageTest"/>
-        </classes>
-    </test>
-  
-    
     <test name="Open Cat Functional Test">
         <classes>
            <class name="com.home.page.RegisterPageTest"/>
+        </classes>
+    </test>
+    
+    <test name="Open Cat Smoke Test">
+        <classes>
+           <class name="com.home.page.LoginPageTest"/>
         </classes>
     </test>
     

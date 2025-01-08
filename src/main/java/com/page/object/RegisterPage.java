@@ -22,6 +22,8 @@ public class RegisterPage {
 		 private String submitFormBtn = "//*[@id='content']/form/div/div/input[2]";
 		 private String clickPopUpBtn = "//*[@id=\"modal-agree\"]/div/div/div[1]/button";
 		 
+		 
+		 
 		 //page constructor
 		 public RegisterPage(Page page){
 		   this.page = page;
@@ -31,15 +33,23 @@ public class RegisterPage {
 		 
 		 
 		 
-		public RegisterPage getRegisterPageTitle() {
-			
-			String title =  page.title();
-			System.out.println("page title:" + title);
-			return getRegisterPageTitle();
-		 }
-		
-		
-		 
+		 public String getRegisterPageTitle() {
+			    // Define the locator for the register page title
+			    Locator registerPageTitle = page.locator("//*[@id='content']/h1");
+
+			    // Wait until the title element is visible
+			    page.waitForSelector("//*[@id='content']/h1", new Page.WaitForSelectorOptions().setState(WaitForSelectorState.VISIBLE));
+
+			    // Verify if the title element is visible
+			    Assert.assertTrue(registerPageTitle.isVisible(), "Register page title is not visible!");
+
+			    // Get the text content of the title element
+			    String pageTitle = registerPageTitle.textContent();
+
+			    // Return the title text
+			    return pageTitle;
+			}
+
 		 
 		//PageActions
 		 public  RegisterPage  NavigateToRegister() {
@@ -103,7 +113,6 @@ public class RegisterPage {
 			    // Perform actions once the element is visible
 			    element.click();
 				return subscibeYes;
-
 
 				
 		 }
