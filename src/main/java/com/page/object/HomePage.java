@@ -50,6 +50,7 @@ public class HomePage {
 	    }
 	    
 	    
+	    
 	    public RegisterPage navigateToRegisterPage() {
 	    	page.click(myAccountBtn);
 	    	page.click(registerBtn);

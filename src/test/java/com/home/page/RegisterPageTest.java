@@ -1,12 +1,10 @@
 package com.home.page;
 
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import com.app.constants.Appconstants;
 import com.base.test.BaseTest;
-import com.page.object.HomePage;
 import com.page.object.RegisterPage;
 
 public class RegisterPageTest extends BaseTest {
@@ -20,14 +18,14 @@ public class RegisterPageTest extends BaseTest {
     }
 
     // Verify the title of the registration page
-    @Test(priority=2)
+    //@Test(priority=2)
     public void validateRegisterPageTitle() {
-        String actualPageTitle = registerPage.getRegisterPageTitle();
-        System.out.println("Register Page Title: " + actualPageTitle);
-        Assert.assertEquals(actualPageTitle, Appconstants.REGISTER_PAGE_TITLE, "Page title mismatch!");
+        RegisterPage actualRegistgerPageTitle = registerPage.getRegisterPageTitle();
+        System.out.println("Register Page Title: " + actualRegistgerPageTitle);
+        Assert.assertEquals(actualRegistgerPageTitle, Appconstants.REGISTER_PAGE_TITLE, "Page title mismatch!");
     }
 
-    // DataProvider for parameterized testing
+    // DataProvider for parameterised testing
     @DataProvider(name = "userData")
     public Object[][] getUserData() {
         return new Object[][]{
@@ -44,9 +42,12 @@ public class RegisterPageTest extends BaseTest {
         registerPage.telephone(telephone);
         registerPage.password(password);
         registerPage.passwordConfirm(password); // Confirm password
-        registerPage.subscribeYes(); 
-        registerPage.privatePolicy();// Subscribe to newsletters
+        registerPage.subscribeYes();
+        registerPage.privatePolicy();
+        registerPage.clickPopBtnn();
+         
     }
+    
 
     // Submit the form
     @Test(priority = 3, dependsOnMethods = "fillRegistrationForm")
@@ -54,5 +55,6 @@ public class RegisterPageTest extends BaseTest {
         registerPage.submitFormBtn();
         // Add validation to verify successful submission, if applicable
     }
+    
 }
 

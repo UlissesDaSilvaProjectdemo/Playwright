@@ -18,10 +18,9 @@ public class RegisterPage {
 		 private String password="//*[@id='input-password'] ";
 		 private String passwordConfirm="//*[@id='input-confirm'] ";
 		 private String subscibeYes = "//*[@id='content']/form/fieldset[3]/div/div/label[1]/input)";
-		 private String privatePolicy = "//*[@id='content']/form/div/div/input[1]";
-		 
+		 private String privatePolicy = "//*[@id=\"content\"]/form/div/div/input[1]";
 		 private String submitFormBtn = "//*[@id='content']/form/div/div/input[2]";
-		 
+		 private String clickPopUpBtn = "//*[@id=\"modal-agree\"]/div/div/div[1]/button";
 		 
 		 //page constructor
 		 public RegisterPage(Page page){
@@ -31,12 +30,14 @@ public class RegisterPage {
 		}
 		 
 		 
-		public String getRegisterPageTitle() {
+		 
+		public RegisterPage getRegisterPageTitle() {
 			
 			String title =  page.title();
 			System.out.println("page title:" + title);
 			return getRegisterPageTitle();
 		 }
+		
 		
 		 
 		 
@@ -46,8 +47,7 @@ public class RegisterPage {
 			 page.click(navigateToregisterBtn);
 			 return new RegisterPage(page);
 			 
-			 
-			  
+				  
 
 	}
 		 
@@ -107,20 +107,28 @@ public class RegisterPage {
 
 				
 		 }
-		 public String privatePolicy(){
-				page.click(privatePolicy);
-				return privatePolicy;
- 
-
+		 
+		 public String privatePolicy() {
+			 page.click(privatePolicy);
+			 return privatePolicy;
+			 
 		 }
-		 public String submitFormBtn( ){
-				page.click(submitFormBtn);
-				return submitFormBtn;
-
-
+		 
+		 public String clickPopBtnn() {
+			 page.click(clickPopUpBtn);
+			return clickPopUpBtn;
 		 }
-
+		 
+		 public String submitFormBtn() {
+			 
+			 page.click(submitFormBtn);
+			 return submitFormBtn;
+			 
+			 
+		 }
+		 
 }
+		  
 	
 
 
