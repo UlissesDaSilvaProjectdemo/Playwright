@@ -1,9 +1,7 @@
 package com.home.page;
 
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import com.app.constants.Appconstants;
 import com.base.test.BaseTest;
 import com.page.object.RegisterPage;
 
